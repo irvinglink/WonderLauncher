@@ -1,21 +1,30 @@
 import React, { useState } from "react";
 import { invoke } from "@tauri-apps/api/tauri";
 
-function LoginContainer() {
+export default function LoginContainer() {
   const inputStyles =
     "bg-transparent border-b border-white text-white py-1 focus:outline-none";
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  
-    // Invoke the login command with username and password
+  // Validate if username and password are not empty
+  const validateInputs = () => {
+    if (!username || !password) {
+      console.log("Please enter both username and password");
+      return false;
+    }
+    return true;
+  };
+
+  // Invoke the login command with username and password
   const handleLogin = () => {
-    invoke("login", {credentials: { username, password } })
-      .then(response => {
-        console.log(response);
-      })
-      .catch(error => {
+    if (!validateInputs()) {
+      return;
+    }
+
+    invoke("login", { credentials: { username, password } })
+      .catch((error) => {
         console.error(error);
       });
   };
@@ -23,13 +32,16 @@ function LoginContainer() {
   return (
     <div className="flex items-center justify-center h-screen w-screen">
       <div className="backdrop-blur-sm rounded-xl w-[350px] h-96 absolute z-10 p-4 flex flex-col border border-white">
-        <h1 className="text-white font-bold text-xl text-center m-4 mb-12">
+        <h1 className="text-white font-bold text-xl text-center m-4">
           Wonder Launcher
         </h1>
+        <div className="flex justify-center items-center">
+          <img src="../../../public\diamond.svg" className="fill-white w-12 h-12" />
+        </div>
         <input
           type="text"
           placeholder="Username"
-          className={inputStyles + " mb-3"}
+          className={inputStyles + " mb-3 mt-3"}
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
@@ -74,5 +86,3 @@ function LoginContainer() {
     </div>
   );
 }
-
-export default LoginContainer;

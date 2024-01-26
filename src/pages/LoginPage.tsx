@@ -8,6 +8,7 @@ function LoginPage() {
       className="w-full h-full absolute object-cover -z-10"
       alt="Login Background "
     ></img>
+    
     <LoginContainer />
   </div>;
 }

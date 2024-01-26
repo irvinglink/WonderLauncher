@@ -1,4 +1,3 @@
-import "./App.css";
 import TitleBar from "./components/global/TitleBar";
 import LoginPage from "./pages/LoginPage";
 import {
@@ -14,7 +13,7 @@ function App() {
       <TitleBar />
       <HashRouter basename="/">
         <Routes>
-          <Route path="/" Component={LoginPage}></Route>
+          <Route path="/" Component={LoginPage}/>
         </Routes>
       </HashRouter>
     </div>
