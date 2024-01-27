@@ -2,6 +2,8 @@
 
 WonderLauncher is a sleek and efficient Minecraft Launcher built with the powerful combination of Rust and ReactJS using the Tauri framework. 
 
+![Screenshot 1](https://i.imgur.com/yBc7HYq.png)
+
 ## Technologies 💎
 - Tauri
 - Rust
