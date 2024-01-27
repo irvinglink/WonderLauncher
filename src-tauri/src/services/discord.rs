@@ -9,6 +9,7 @@ pub struct DiscordPresence;
 impl DiscordPresence {
     pub fn start_discord_presence() -> Result<(), Box<dyn std::error::Error>> {       
         
+        // Discord app id key from .env for Discord Client
         let discord_app_id: String = match env::var("DISCORD_APP_ID") {
             Ok(val) => val,
             Err(err)=> {
@@ -17,25 +18,30 @@ impl DiscordPresence {
             }
         };
         
+        // Discord app image key from .env
         let discord_app_image: String = match env::var("DISCORD_APP_IMAGE") {
             Ok(val) => val,
             Err(err)=> {
                 println!("{}: {}", err, "DISCORD_APP_IMAGE");
-                process::exit(1)
+                process::exit(1);
             }
         };
+        let large_image: &str = discord_app_image.as_str();
 
-
+        // Starts the discord client
         let mut client: DiscordIpcClient = DiscordIpcClient::new(discord_app_id.as_str())?;
         
-        let large_image: &str = discord_app_image.as_str();
         client.connect()?;
 
+        // This loop maintains the discord connection
         loop {
+
+            // Define discord activity "decoration"
             let activity = activity::Activity::new()
-                .state("Online")
+                .state("Coming Soon")
                 .assets(
                     activity::Assets::new().large_image(large_image)
+                    .small_text("Coming Soon \ndeveloped by irvinglink")
             ).buttons(
                 vec![activity::Button::new("Repository", "https://github.com/irvinglink/WonderLauncher")]
             );

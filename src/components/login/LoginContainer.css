@@ -1,0 +1,7 @@
+.glow-on-hover {
+  transition: text-shadow 0.3s;
+}
+
+.glow-on-hover:hover {
+  text-shadow: 0 0 10px white;
+}

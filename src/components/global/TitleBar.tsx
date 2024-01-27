@@ -14,7 +14,7 @@ function TitleBar() {
   const handleClose = () => appWindow.close();
 
   return (
-    <div data-tauri-drag-region className="h-[30px] select-none flex justify-end fixed top-0 left-0 right-0 z-50">
+    <div data-tauri-drag-region className="h-[30px] select-none flex flex-row justify-end fixed top-0 left-0 right-0 z-50">
       {[
         { id: "titlebar-minimize", icon: "window-minimize", onClick: handleMinimize },
         { id: "titlebar-maximize", icon: "window-maximize", onClick: handleToggleMaximize },

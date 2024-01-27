@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { invoke } from "@tauri-apps/api/tauri";
+import main_button from "../../assets/sounds/main_button.mp3";
+import menu_selection from "../../assets/sounds/menu_selection.mp3";
+import "./LoginContainer.css";
 
 export default function LoginContainer() {
   const inputStyles =
@@ -17,16 +20,23 @@ export default function LoginContainer() {
     return true;
   };
 
+  const onHoverButton = () => {
+    new Audio(menu_selection).play();
+  };
+
   // Invoke the login command with username and password
   const handleLogin = () => {
+    new Audio(main_button).play();
+
     if (!validateInputs()) {
       return;
     }
 
-    invoke("login", { credentials: { username, password } })
-      .catch((error) => {
-        console.error(error);
-      });
+    invoke("login", { credentials: { username, password } }).catch((error) => {
+      console.error(error);
+    });
+
+    invoke("create_main_window");
   };
 
   return (
@@ -36,7 +46,10 @@ export default function LoginContainer() {
           Wonder Launcher
         </h1>
         <div className="flex justify-center items-center">
-          <img src="../../../public\diamond.svg" className="fill-white w-12 h-12" />
+          <img
+            src="../../../public\diamond.svg"
+            className="fill-white w-12 h-12"
+          />
         </div>
         <input
           type="text"
@@ -64,6 +77,7 @@ export default function LoginContainer() {
           <a
             className="text-white inline-block m-4 mr-0 border-b border-transparent hover:border-white transition duration-300"
             href="https://localhost/forgot"
+            onMouseOver={onHoverButton}
           >
             Forgot password?
           </a>
@@ -72,16 +86,20 @@ export default function LoginContainer() {
         <button
           className="bg-transparent border border-white text-white font-bold px-4 py-2 rounded hover:bg-white hover:text-black transition duration-300"
           onClick={handleLogin}
+          onMouseOver={onHoverButton}
         >
           Login
         </button>
 
-        <a
-          className="flex-grow flex items-center justify-center text-white font-normal text-center hover:font-semibold transition duration-300"
-          href="https://localhost/signup"
-        >
-          Sign Up
-        </a>
+        <div className="flex-grow flex items-center justify-center">
+          <a
+            className="text-white font-normal text-center hover:font-semibold transition duration-300 glow-on-hover"
+            href="https://localhost/signup"
+            onMouseOver={onHoverButton}
+          >
+            Sign Up
+          </a>
+        </div>
       </div>
     </div>
   );

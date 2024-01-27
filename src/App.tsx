@@ -1,11 +1,11 @@
 import TitleBar from "./components/global/TitleBar";
 import LoginPage from "./pages/LoginPage";
 import {
-  BrowserRouter as Router,
   Routes,
   Route,
   HashRouter,
 } from "react-router-dom";
+import MainPage from "./pages/MainPage";
 
 function App() {
   return (
@@ -14,6 +14,7 @@ function App() {
       <HashRouter basename="/">
         <Routes>
           <Route path="/" Component={LoginPage}/>
+          <Route path="/main" Component={MainPage}/>
         </Routes>
       </HashRouter>
     </div>
