@@ -1,11 +1,7 @@
-import TitleBar from "./components/global/TitleBar";
 import LoginPage from "./pages/LoginPage";
-import {
-  Routes,
-  Route,
-  HashRouter,
-} from "react-router-dom";
+import { Routes, Route, HashRouter } from "react-router-dom";
 import MainPage from "./pages/MainPage";
+import TitleBar from "./components/global/TitleBar";
 
 function App() {
   return (
@@ -13,8 +9,8 @@ function App() {
       <TitleBar />
       <HashRouter basename="/">
         <Routes>
-          <Route path="/" Component={LoginPage}/>
-          <Route path="/main" Component={MainPage}/>
+          <Route path="/login" Component={LoginPage} />
+          <Route path="/" Component={MainPage} />
         </Routes>
       </HashRouter>
     </div>

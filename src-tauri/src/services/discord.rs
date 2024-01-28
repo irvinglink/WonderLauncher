@@ -48,6 +48,7 @@ impl DiscordPresence {
 
             if let Err(err) = client.set_activity(activity) {
                 eprintln!("Error setting activity: {:?}", err);
+                client.reconnect()?;
                 // Handle the error gracefully, e.g., attempt to reconnect
             }
 

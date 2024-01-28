@@ -14,7 +14,8 @@ WonderLauncher is a sleek and efficient Minecraft Launcher built with the powerf
 - [x] Discord Rich Presence
 - [ ] Full account management
 - [ ] News feed
-- [ ] Java settings
+- [ ] In game configurations (RAM, Resolution)
+- [ ] Multiple Accounts
 - [ ] Mojang Services
 - [ ] Skin preview
 

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { invoke } from "@tauri-apps/api/tauri";
 import main_button from "../../assets/sounds/main_button.mp3";
 import menu_selection from "../../assets/sounds/menu_selection.mp3";
-import "./LoginContainer.css";
+import "../../utils/utils.css";
 
 export default function LoginContainer() {
   const inputStyles =

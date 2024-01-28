@@ -1,0 +1,9 @@
+.button-glow-effect {
+  transition: all 0.2s ease;
+}
+
+.button-glow-effect:hover {
+  text-shadow: 0 0 10px white;
+}
+
+
